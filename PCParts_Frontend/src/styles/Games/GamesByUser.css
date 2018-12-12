@@ -1,0 +1,17 @@
+.ui.container{
+    width: 80%;
+    margin-bottom:35px;
+    background-color:#1a1818;
+    border-radius: 15px;
+}
+.ui.center.aligned.header, .ui.centered.header {
+    color: white;
+}
+
+.pagination{
+    display: inline;
+}
+
+.ui.active.transition.visible.dimmer{
+    background-color:#262626;
+}
