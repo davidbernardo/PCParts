@@ -13,6 +13,10 @@ namespace PCParts.Presentation.WebAPI.Controllers
     public class ProductsController : ApiController
     {
         //GET products
+        /// <summary>
+        /// Returns all products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("products")]
         public Object List()
@@ -34,6 +38,11 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
 
         //GET product/:productid
+        /// <summary>
+        /// Returns the information of one product
+        /// </summary>
+        /// <param name="productid"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("product/{productid}")]
         public Object Details(int productid)
@@ -55,6 +64,11 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
 
         //GET products/type/:productType
+        /// <summary>
+        /// Returns all products of one type
+        /// </summary>
+        /// <param name="productType"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("products/type/{productType}")]
         public Object Type(int productType)
@@ -76,6 +90,10 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
 
         //GET products/recent
+        /// <summary>
+        /// Returns the most recent added products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("products/recent")]
         public Object Recent()
@@ -99,6 +117,10 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
 
         //GET products/type
+        /// <summary>
+        /// Returns the list of type of products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("products/type")]
         public Object Type()

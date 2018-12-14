@@ -32,6 +32,11 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
         
         //GET order/:orderid
+        /// <summary>
+        /// Returns all the information related to a order
+        /// </summary>
+        /// <param name="orderid"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("order/{orderid}")]
         public Object Details(int orderid)
@@ -80,6 +85,10 @@ namespace PCParts.Presentation.WebAPI.Controllers
         }
 
         //GET orders
+        /// <summary>
+        /// Returns the information about one order, as well as the user name that requested it
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("orders")]
         public Object List()

@@ -11,6 +11,11 @@ namespace PCParts.Presentation.WebAPI.Controllers
     public class UsersController : ApiController
     {
         //GET user/details/:userid
+        /// <summary>
+        /// Test get that returns the information about one user
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("user/details/{userid}")]
         public Object Details(int userid)
