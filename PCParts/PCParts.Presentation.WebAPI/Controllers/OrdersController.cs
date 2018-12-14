@@ -12,25 +12,71 @@ namespace PCParts.Presentation.WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrdersController : ApiController
     {
+        public class ProductsInOrder
+        {
+            public Products Product { get; set; }
+            public int Quantity { get; set; }
+            public string SupplierName { get; set; }
+        }
+
+        public class OrderWithAllDetails
+        {
+            public List<ProductsInOrder> Products { get; set; }
+            public Orders Order { get; set; }
+
+            public OrderWithAllDetails(List<ProductsInOrder> prod, Orders ord)
+            {
+                Products = prod;
+                Order = ord;
+            }
+        }
+        
         //GET order/:orderid
         [HttpGet]
         [Route("order/{orderid}")]
         public Object Details(int orderid)
         {
-            Object orderDetails;
-
-            try
+            List<ProductsInOrder> products = new List<ProductsInOrder>();
+            OrderWithAllDetails order = null;
             {
-                using (var db = new PCPartsDB())
-                { orderDetails = db.Orders.Find(orderid); }
-            }
-            catch (Exception) { return null; }
+                try
+                {
+                    using (var db = new PCPartsDB())
+                    {
+                        //Information about Order
+                        var auxOrder = db.Orders.Find(orderid);
+                        //Info ab
+                        var productOrder = db.Product_Order.Where(po => po.OrderFK == auxOrder.OrderID).ToList();
+                        foreach (var item in productOrder)
+                        {
+                            var product = db.Products.Where(p => p.ProductID == item.ProductFK).FirstOrDefault();
+                            string supplier = db.Suppliers.Where(s => s.SupplierID == product.SupplierFK).Select(s => s.Name).FirstOrDefault();
+                            ProductsInOrder prd = new ProductsInOrder
+                            {
+                                Product = product,
+                                Quantity = item.Quantity,
+                                SupplierName = supplier
+                            };
+                            products.Add(prd);
+                        }
+                        order = new OrderWithAllDetails(products, auxOrder);
 
-            if (orderDetails == null)
-            {
-                return new { result = false, info = "Erro ao retornar os detalhes do produto." };
+                    }
+                }
+                catch (Exception) { return null; }
+
+                if (order == null)
+                {
+                    return new { result = false, info = "Erro ao retornar os detalhes da order." };
+                }
+                return new { result = true, data = order };
             }
-            return new { result = true, data = orderDetails };
+        }
+
+        public class OrderWithUserName
+        {
+            public string UserName { get; set; }
+            public Orders Order { get; set; }
         }
 
         //GET orders
@@ -38,18 +84,30 @@ namespace PCParts.Presentation.WebAPI.Controllers
         [Route("orders")]
         public Object List()
         {
-            Object orders;
+            List<OrderWithUserName> orders = new List<OrderWithUserName>();
 
             try
             {
                 using (var db = new PCPartsDB())
-                { orders = db.Orders.ToList(); }
+                {
+                    var aux = db.Orders.ToList();
+                    foreach (var item in aux)
+                    {
+                        string user = db.Users.Where(u => u.UserID == item.UserFK).Select(n => n.Name).FirstOrDefault();
+                        OrderWithUserName order = new OrderWithUserName
+                        {
+                            Order = item,
+                            UserName = user
+                        };
+                        orders.Add(order);
+                    }
+                }
             }
             catch (Exception) { return null; }
 
             if (orders == null)
             {
-                return new { result = false, info = "Erro ao retornar os detalhes do produto." };
+                return new { result = false, info = "Erro ao retornar todas as orders." };
             }
             return new { result = true, data = orders };
         }

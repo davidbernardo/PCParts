@@ -11,8 +11,6 @@ export default class Register extends React.Component {
         this.state = {
             email: '',
             password: '',
-            nickname: '',
-            age: 0,
             image_url: 'creatorImage.png',
             loading: false
         };
@@ -80,10 +78,7 @@ export default class Register extends React.Component {
                                             <Input name="confirmPassword" label="Confirm Password" type="password" onChange={this.handleChange} />
                                         </Grid.Row>
                                         <Grid.Row>
-                                            <Input name="nickname" label="Nickname" onChange={this.handleChange} />
-                                        </Grid.Row>
-                                        <Grid.Row>
-                                            <Input name="age" label="Age" onChange={this.handleChange} />
+                                            <Button type="submit" content="Sign Up" onClick={this.handleSubmit}></Button>
                                         </Grid.Row>
                                     </Grid>
                                 </Form.Group>
@@ -91,8 +86,7 @@ export default class Register extends React.Component {
                         </Grid.Column>
                         <Grid.Column textAlign="center">
                             <Grid.Row>
-                                <Image centered src={require('../../assets/images/logoPEBOLIM.png')} size="medium" />
-                                <Button type="submit" content="Sign Up" onClick={this.handleSubmit}></Button>
+                                <Image centered src={require('../../assets/images/logoPCParts.png')} size="medium" />
                             </Grid.Row>
                         </Grid.Column>
                     </Grid>

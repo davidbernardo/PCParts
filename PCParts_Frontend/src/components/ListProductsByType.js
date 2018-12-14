@@ -32,25 +32,27 @@ export default class ListProductsByType extends React.Component {
     render() {
         return (
             <div className="games_board">
-                <Header id="title" as="h1" textAlign="center" style={{ paddingBottom: 10 }}>Products</Header>
+                <h2 style={{paddingBottom: 10, textAlign: "center"}}>Products</h2>
+                <Grid>
                 <Grid.Row centered columns={4} style={{ paddingTop: 30 }}>
                     {
                         this.state.products.map((product, i) =>
                             (
                                 <Grid.Column key={product.ProductID}><Link to={"/productdetails/" + product.ProductID}>
-                                    <Image centered size='small' circular src={require('../assets/images/datboy.png')} />
+                                    <Image centered size='small' circular src={require('../assets/images/'+product.Image)} />
                                     <div style={{ fontSize: 30, textAlign: 'center', fontWeight: 600, paddingTop: 10 }}>
                                         <p>
                                             {product.Name}
                                         </p>
                                         <p style={{ fontSize: 15, marginTop: -20 }}>
-                                            {product.Price}
+                                            {product.Price}€
                                         </p>
                                     </div>
                                 </Link></Grid.Column>
                             ))
                     }
                 </Grid.Row>
+                </Grid>
             </div>
         );
     }

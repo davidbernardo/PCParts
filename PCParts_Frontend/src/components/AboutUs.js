@@ -6,7 +6,7 @@ export default class AboutUs extends React.Component {
     render() {
         return (
             <Container style={{ paddingBottom: 20, paddingRight: 20, textAlign: 'justify' }}>
-                <p style={{ fontSize: 50, fontFamily: 'Teko', fontWeight: 500, paddingLeft: 50, paddingTop: 25, marginBottom: -1 }}>
+                <p style={{ fontSize: 50, fontFamily: 'Teko', fontWeight: 500, paddingLeft: 50, marginBottom: -1 }}>
                     About us...
                 </p>
                 <Divider />

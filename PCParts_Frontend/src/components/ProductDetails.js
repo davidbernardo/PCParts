@@ -9,25 +9,9 @@ export default class ProductDetails extends React.Component {
         this.state = {
             productID: this.props.match.params.id,
             product: []
-            //loading: true
         };
     }
 
-    /*componentDidMount() {
-        var headers = new Headers({
-            "Authorization": localStorage.getItem("token"),
-            'Content-Type': 'application/json'
-        });
-        var myInit = {
-            method: 'GET',
-            headers: headers
-        }
-        fetch(`http://localhost:3000/player`, myInit)
-            .then(result => result.json())
-            .then(usr => this.setState({ user: usr.user }))
-        this.setState({ loading: false })
-
-    }*/
     componentDidMount() {
         var headers = new Headers({
             'Content-Type': 'application/json'
@@ -42,14 +26,6 @@ export default class ProductDetails extends React.Component {
     }
 
     render() {
-        /*const loading = this.state.loading;
-        if (loading) {
-            return (
-                <Dimmer active>
-                    <Loader size='massive'>Loading</Loader>
-                </Dimmer>
-            )
-        } else {*/
         return (
             <div>
                 <Header id="title" style={{ textAlign: 'left', fontSize: 50 }}>{'Nome do Produto'}</Header>
@@ -89,6 +65,5 @@ export default class ProductDetails extends React.Component {
                 </Grid>
             </div>
         );
-        //}
     }
 }

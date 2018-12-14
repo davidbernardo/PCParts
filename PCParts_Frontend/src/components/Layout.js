@@ -14,7 +14,6 @@ export default class Layout extends React.Component {
             <div id="wrapper">
                 <Header />
                 <div id="content">
-                <NotificationContainer />
                     <Main />
                 </div>
                 <Footer />

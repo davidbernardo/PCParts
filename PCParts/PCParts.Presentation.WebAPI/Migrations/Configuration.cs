@@ -70,15 +70,15 @@ namespace PCParts.Presentation.WebAPI.Migrations
 
             var products = new List<Products>
             {
-                new Products {Description="Processador tops1",Details="5*",Name="Processador1",Price=5.99,ProductID=1,SupplierFK=1,Image="image1.png",Stock=7,ProductTypeFK=1  },
-                new Products {Description="Processador tops2",Details="5*",Name="Processador2",Price=5.99,ProductID=2,SupplierFK=3,Image="image2.png",Stock=5,ProductTypeFK=1  },
-                new Products {Description="RAM tops1",Details="5*",Name="RAM1",Price=5.99,ProductID=3,SupplierFK=3,Image="image3.png",Stock=4,ProductTypeFK=2  },
-                new Products {Description="Motherboard tops1",Details="5*",Name="Motherboard1",Price=5.99,ProductID=4,SupplierFK=1,Image="image4.png",Stock=3,ProductTypeFK=3  },
-                new Products {Description="Motherboard tops2",Details="5*",Name="Motherboard2",Price=5.99,ProductID=5,SupplierFK=2,Image="image5.png",Stock=12,ProductTypeFK=3  },
-                new Products {Description="RAM tops2",Details="5*",Name="RAM2",Price=5.99,ProductID=6,SupplierFK=3,Image="image6.png",Stock=10,ProductTypeFK=2  },
-                new Products {Description="RAM tops3",Details="5*",Name="RAM3",Price=5.99,ProductID=7,SupplierFK=1,Image="image7.png",Stock=4,ProductTypeFK=2  },
-                new Products {Description="Motherboard tops3",Details="5*",Name="Motherboard3",Price=5.99,ProductID=8,SupplierFK=2,Image="image8.png",Stock=3,ProductTypeFK=3  },
-                new Products {Description="Motherboard tops4",Details="5*",Name="Motherboard4",Price=5.99,ProductID=9,SupplierFK=1,Image="image9.png",Stock=0,ProductTypeFK=3  },
+                new Products {Description="Processador tops1",Details="5*",Name="Processador1",Price=5.99,ProductID=1,SupplierFK=1,Image="image1.jpg",Stock=7,ProductTypeFK=1  },
+                new Products {Description="Processador tops2",Details="5*",Name="Processador2",Price=5.99,ProductID=2,SupplierFK=3,Image="image2.jpg",Stock=5,ProductTypeFK=1  },
+                new Products {Description="RAM tops1",Details="5*",Name="RAM1",Price=5.99,ProductID=3,SupplierFK=3,Image="image3.jpg",Stock=4,ProductTypeFK=2  },
+                new Products {Description="Motherboard tops1",Details="5*",Name="Motherboard1",Price=5.99,ProductID=4,SupplierFK=1,Image="image4.jpg",Stock=3,ProductTypeFK=3  },
+                new Products {Description="Motherboard tops2",Details="5*",Name="Motherboard2",Price=5.99,ProductID=5,SupplierFK=2,Image="image5.jpg",Stock=12,ProductTypeFK=3  },
+                new Products {Description="RAM tops2",Details="5*",Name="RAM2",Price=5.99,ProductID=6,SupplierFK=3,Image="image6.jpg",Stock=10,ProductTypeFK=2  },
+                new Products {Description="RAM tops3",Details="5*",Name="RAM3",Price=5.99,ProductID=7,SupplierFK=1,Image="image7.jpg",Stock=4,ProductTypeFK=2  },
+                new Products {Description="Motherboard tops3",Details="5*",Name="Motherboard3",Price=5.99,ProductID=8,SupplierFK=2,Image="image8.jpg",Stock=3,ProductTypeFK=3  },
+                new Products {Description="Motherboard tops4",Details="5*",Name="Motherboard4",Price=5.99,ProductID=9,SupplierFK=1,Image="image9.jpg",Stock=0,ProductTypeFK=3  },
             };
             products.ForEach(pr => context.Products.Add(pr));
             context.SaveChanges();

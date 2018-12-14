@@ -73,48 +73,6 @@ export default class Header extends React.Component {
         }
     }
 
-    /*getInvites = () => {
-        var headers = new Headers({
-            "Authorization": localStorage.getItem("token"),
-            'Content-Type': 'application/json'
-        });
-        var myInit = {
-            method: 'GET',
-            headers: headers
-        }
-        fetch(`http://localhost:3000/teams/pendent/`, myInit)
-            .then(result => result.json())
-            .then(invs => {
-                if (invs.status===401){
-                    localStorage.clear();
-                    window.location.href="/login"
-                }else{
-                    this.setState({
-                        invites: invs.data
-                    })
-                }
-            })
-    }
-
-    componentDidMount() {
-        
-        if (localStorage.getItem('token') != null) {
-            this.getInvites();
-            this.interval = setInterval(this.getInvites, 10000)
-        }
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        if (nextState == this.state) {
-            if (localStorage.getItem('token') != null) {
-                this.getInvites();
-                this.interval = setInterval(this.getInvites, 10000)
-            }
-        }
-    }
-*/
-    toggleVisibility = () => this.setState({ visible: !this.state.visible })
-
     componentDidMount() {
         var headers = new Headers({
             'Content-Type': 'application/json'
@@ -130,12 +88,6 @@ export default class Header extends React.Component {
     }
 
     render() {
-        /*let log = null;
-        if (localStorage.getItem('token') != null) {
-            //log = <LogoutButton invites={this.state.invites} />;
-        } else {
-            log = <LoginButton />;
-        }*/
         return (
 
             <Responsive minWidth={740}>
@@ -143,14 +95,14 @@ export default class Header extends React.Component {
                     <Menu>
                         <Menu.Menu className="nav-main">
                             <Menu.Item>
-                                <Image src={require('../assets/images/logoPEBOLIM.png')} size='mini' as="a" href="/" />
+                                <Image src={require('../assets/images/logoPCParts.png')} size='mini' as="a" href="/" />
                             </Menu.Item>
                             <Dropdown item text='Products'>
                                 <Dropdown.Menu>
                                     {
                                         this.state.product_types.map((type, i) =>
                                             (
-                                                <Dropdown.Item key={type.ProductTypeID}><Link to={"/products/type/"+type.ProductTypeID}>{type.Type}</Link></Dropdown.Item>
+                                                <Dropdown.Item key={type.ProductTypeID} onClick={()=> window.location.assign("/products/type/"+type.ProductTypeID)}>{type.Type}</Dropdown.Item>
 
                                             ))
                                     }
@@ -158,7 +110,6 @@ export default class Header extends React.Component {
                             </Dropdown>
                             <Menu.Item><Link to='/listorders'>Orders</Link></Menu.Item>
                             <Menu.Item><Link to='/aboutus'>About Us</Link></Menu.Item>
-                            <Menu.Item><Link to='/contactus'>Contact Us</Link></Menu.Item>
                         </Menu.Menu>
                         <Menu.Menu position="right">
                             <Menu.Item><Link to='/login'>Login</Link></Menu.Item>

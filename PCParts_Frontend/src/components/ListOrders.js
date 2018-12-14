@@ -30,24 +30,24 @@ export default class ListOrders extends React.Component {
 
     render() {
         return (
-            <div className="games_board">
-                <Header id="title" as="h1" textAlign="center" style={{paddingBottom: 10}}>Orders</Header>
+            <div >
+                <h2 style={{paddingBottom: 10, textAlign: "center"}}>Orders</h2>
                 {
                         this.state.orders.map((order, i) =>
                             (
-                            <Container fluid className="game_details" key={order.OrderID}><Link to={'/orderdetails'+order.OrderID}>
+                            <Container fluid  key={order.Order.OrderID}><Link to={'/order/'+order.Order.OrderID}>
                                 <Grid columns='equal'>
                                     <Grid.Row>
                                         <Grid.Column textAlign="left" style={{paddingLeft:40}} >
-                                            <h3>Client: fuck</h3>
-                                            Status: {order.Status}
+                                            <h3>Client: {order.UserName}</h3>
+                                            Status: {order.Order.Status}
                                         </Grid.Column>
                                         <Grid.Column style={{fontSize:15}}>
-                                            <div><h3>Order Date: {order.OrderDate}</h3></div>
+                                            <div><h3>Order Date: {order.Order.OrderDate}</h3></div>
                                         </Grid.Column>
                                     </Grid.Row>
                                 </Grid>
-                                </Link></Container>
+                                </Link><hr /></Container>
                             ))
                 }
             </div>
